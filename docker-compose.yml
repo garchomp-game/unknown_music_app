@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: front/
+      dockerfile: Dockerfile
+    container_name: web
+    volumes:
+      - ./front/app:/usr/src/app
+    command: 'yarn dev'
+    ports:
+      - "4001:3000"
