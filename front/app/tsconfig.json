@@ -15,8 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     "outDir": "./dist",
-    "baseUrl": "./pages",
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "postcss.config.js", "tailwind.config.js", "postcss.config.js", "next.config.js", "pages/index.tsx, "pages/_app.js""],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "postcss.config.js", "tailwind.config.js", "postcss.config.js", "next.config.js", "pages/index.tsx", "pages/_app.js"],
   "exclude": ["node_modules"]
 }
