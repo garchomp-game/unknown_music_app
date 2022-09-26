@@ -3,7 +3,7 @@ import { Transition } from "@headlessui/react";
 import Link from "next/link";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
-export default function TopWrapper() {
+const TopWrapper = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleToggleButtonClick = () => {
     setIsOpen(true);
@@ -11,7 +11,6 @@ export default function TopWrapper() {
   const handleCloseButtonClick = () => {
     setIsOpen(false);
   };
-
   return (
     <div className="relative bg-gray-900 overflow-hidden mx-20">
       <div className="max-w-7xl mx-auto z-10">
@@ -50,26 +49,26 @@ export default function TopWrapper() {
                   </div>
                 </div>
               </div>
-              <div className="hidden md:block md:pr-12 md:space-x-8 xl:ml-6 lg:space-x-2 2xl:space-x-11 xl:space-x-8">
+              <div className="hidden md:block md:pr-20 lg:space-x-1 md:space-x-8 xl:space-x-3 xl:ml-14 lg:ml-8">
                 <AnchorLink
                   href="#container"
-                  className="px-3 py-2 text-sm font-medium text-center text-white bg-gray-900 rounded hover:bg-gray-700"
+                  className="lg:px-2 xl:px-3 py-2 xl:text-sm sm:text-xs xl:font-medium text-center text-white bg-gray-900 rounded hover:bg-gray-700"
                 >
                   Unknown_Musicとは
                 </AnchorLink>
                 <AnchorLink
                   href="#gallery"
-                  className="px-3 py-2 text-sm font-medium text-center text-white bg-gray-900 rounded hover:bg-gray-700"
+                  className="xl:px-3 lg:px-2 py-2 xl:text-sm sm:text-xs xl:font-medium text-center text-white bg-gray-900 rounded hover:bg-gray-700"
                 >
                   コンテンツ
                 </AnchorLink>
                 <Link href="/top-contents">
-                  <a className="px-3 py-2 text-sm font-medium text-center text-white bg-gray-900 rounded hover:bg-gray-700">
+                  <a className="lg:px-4 xl:px-3 lg:px-2 py-2 xl:text-sm sm:text-xs xl:font-medium text-center text-white bg-gray-900 rounded hover:bg-gray-700">
                   使ってみる
                   </a>
                 </Link>
                 <Link href="/login-page">
-                  <a className="px-3 py-2 text-sm font-medium text-center text-white bg-indigo-600 rounded hover:bg-indigo-700">
+                  <a className="md:px-5 lg:px-4 xl:px-3 py-2 xl:text-sm sm:text-xs xl:font-medium text-center text-white bg-indigo-600 rounded hover:bg-indigo-700">
                     ログイン
                   </a>
                 </Link>
@@ -155,20 +154,19 @@ export default function TopWrapper() {
               </div>
             )}
           </Transition>
-
-          <main className="mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-10 lg:px-5 xl:mt-16">
-            <div className="sm:text-center sm:container mx-auto lg:text-left">
+          <main className="mx-auto max-w-7xl px-4 sm:mt-12 sm:px-10 md:mt-16 lg:mt-10 lg:px-5 xl:mt-16">
+            <div className="sm:text-center sm:container lg:text-left lg:justify-center xl:pl-10">
               <h2 className="tracking-tight font-medium text-gray-400 sm:text-5xl md:text-1xl">
                 <img
-                  className="inline-block lg:w-2/5 md:pt-0 sm:pt-5 pt-10"
+                  className="inline-block lg:ml-6 xl:ml-3 lg:w-2/5 md:pt-0 sm:pt-5 pt-10 2xl:center"
                   src="/images/logo_name.png"
                 />
                 <br />
-                <span className="mt-8 text-2xl block text-indigo-500 xl:inline-block">
+                <span className="mt-8 lg:ml-6 xl:ml-3 text-2xl block text-indigo-500 xl:inline-block">
                   知られざる名曲を見つけよう
                 </span>
               </h2>
-              <p className="mt-5 text-base text-gray-200 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-12 md:mb-16 md:text-xl lg:mx-0">
+              <p className="mt-5 lg:ml-6 xl:ml-3 text-base text-gray-200 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-12 md:mb-16 md:text-xl lg:mx-0">
                 大好きなあの曲に似た曲を見つけたい。
                 <br />
                 知らない名曲といっぱい出逢いたい。
@@ -178,15 +176,15 @@ export default function TopWrapper() {
               <div className="mt-10 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow">
                   <Link href="/login-page">
-                    <a className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 xl:py-4 xl:text-lg xl:px-10">
-                      アカウント登録
+                    <a className="w-full xl:py-4 sm:text-sm lg:px-1 px-8 py-3 xl:px-10 lg:ml-6 xl:ml-1 flex items-center justify-center border border-transparent text-base rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                      アカウント登録で利用
                     </a>
                   </Link>
                 </div>
                 <div className="mt-3 sm:mt-0 sm:ml-3">
                   <a
                     href="#"
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-indigo-100 hover:bg-indigo-200 xl:py-4 xl:text-lg xl:px-10"
+                    className="w-full xl:py-4 lg:px-1 px-8 py-3 sm:text-sm lg:px-5 xl:px-10 xl:ml-1 lg:ml-6 flex items-center justify-center border border-transparent text-base rounded-md text-indigo-600 bg-indigo-100 hover:bg-indigo-200"
                   >
                     ゲストユーザーで利用
                   </a>
@@ -198,7 +196,7 @@ export default function TopWrapper() {
       </div>
       <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
         <img
-          className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
+          className="h-80 w-full object-cover sm:h-80 md:h-96 lg:w-full lg:h-full"
           src="/images/main.jpg"
           alt="Main Photo"
         />
@@ -206,3 +204,4 @@ export default function TopWrapper() {
     </div>
   );
 }
+export default TopWrapper;

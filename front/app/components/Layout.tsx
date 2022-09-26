@@ -14,7 +14,7 @@ export default function Layout({ children, title = "Unknown Music" }) {
             <Header />
         </section>
       </header>
-      <main className="flex flex-1 items-center w-screen flex-col">
+      <main className="flex flex-1 items-center max-w-screen-sm sm:max-w-screen-xl sm:w-screen flex-col ">
         {children}
       </main>
       <footer>

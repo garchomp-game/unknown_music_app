@@ -8,6 +8,8 @@ services:
     container_name: web
     volumes:
       - ./front/app:/usr/src/app
+    environment:
+      - WATCHPACK_POLLING=true
     command: 'yarn dev'
     ports:
       - "3000:3000"
