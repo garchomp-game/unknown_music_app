@@ -2,8 +2,10 @@ import React, { useRef, useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import Link from "next/link";
 
-export default function Header() {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+//スマホ用ハンバーガーメニュー
   const dropdownRef = useRef();
   useEffect(() => {
     document.addEventListener("mousedown", handleOutSideClick);
@@ -12,6 +14,7 @@ export default function Header() {
     };
   }, []);
 
+  //右上の人アイコン
   const handleOutSideClick = (e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
       setIsOpen(false);
@@ -37,28 +40,28 @@ export default function Header() {
                   <div className="flex space-x-4">
                     <a
                       href="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xs lg:text-sm font-medium"
                       aria-current="page"
                     >
                       アプリの使い方
                     </a>
 
                     <Link href="/admin-page">
-                      <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                      <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xs lg:text-sm font-medium">
                         運営者情報
                       </a>
                     </Link>
 
                     <a
                       href="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xs lg:text-sm font-medium"
                     >
                       利用規約
                     </a>
                     <Link href="/contact-form">
                     <a
                       href="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xs lg:text-sm font-medium"
                     >
                       お問い合わせ
                     </a>
@@ -66,8 +69,7 @@ export default function Header() {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
+              <div className="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto sm:ml-6 sm:pr-1">
                 <div className="ml-3 relative z-30 md:mr-0 mr-10">
                   <div>
                     <button
@@ -144,3 +146,4 @@ export default function Header() {
       </nav>
   );
 }
+export default Header;
