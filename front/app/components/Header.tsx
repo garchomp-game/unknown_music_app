@@ -14,7 +14,7 @@ const Header = () => {
     };
   }, []);
 
-  //右上人アイコン
+  //右上の人アイコン
   const handleOutSideClick = (e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
       setIsOpen(false);
