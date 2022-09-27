@@ -30,7 +30,7 @@ const Header = () => {
                 <div className="flex-shrink-0 flex items-center">
                   <Link href="/">
                     <img
-                      className="ml-10 block h-7 w-auto"
+                      className="sm:ml-10 block h-7 w-auto"
                       src="/images/logo.png"
                       alt="Workflow"
                     />
