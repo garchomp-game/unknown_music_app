@@ -20,31 +20,32 @@ const Home = () => {
           <TopContainer />
         </section>
         <section id="container">
-          <Container  number="1"
+          <Container  number={1}
                       title="Sign Up"
                       text01="まずはアカウント登録をしてみよう！"
                       text02="所要時間約1分！"
                       text03="ゲストユーザー機能を使ってみてもOK！"
                       image={<Human/>} //アイコン画像
           />
-          <Container  number="2"
+          <Container  number={2}
                       title="Music"
                       text01="ログインできたら検索エンジンに"
                       text02="お気に入りの曲を入れてみよう！"
                       text03="新たな音楽との出会いが始まるよ！"
                       image={<Music/>}
           />
-          <Container  number="3"
+          <Container  number={3}
                       title="Like"
                       text01="好みにぴったりな一曲に出会えたら、"
                       text02="ハートのいいね！ボタンを押してみよう！"
                       text03="聞きたい曲をストック出来るよ！"
                       image={<Heart/>}
           />
-          <Container  number="4"
+          <Container  number={4}
                       title="Post"
                       text01="このアプリで名曲に出会えたら、"
                       text02="是非他の人にもシェアしてみよう！"
+                      text03=""
                       image={<Post/>}
           />
           <Spacer />
