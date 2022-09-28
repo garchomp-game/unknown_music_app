@@ -125,19 +125,19 @@ const TopWrapper = () => {
                     </div>
                   </div>
                     <div className="px-2 pt-2 pb-3 space-y-1 hidden sm:block">
-                      <a
-                        href="/admin-page"
+                      <AnchorLink
+                        href="#TopContainer"
                         className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-gray-200 hover:bg-gray-400"
                       >
                         Unknown_Musicとは
-                      </a>
+                      </AnchorLink>
 
-                      <a
-                        href="#"
+                      <AnchorLink
+                        href="#gallery"
                         className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-gray-200 hover:bg-gray-400"
                       >
                         コンテンツ
-                      </a>
+                      </AnchorLink>
                       <a
                         href="/contact-form"
                         className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-gray-200 hover:bg-gray-400"

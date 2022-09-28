@@ -80,13 +80,11 @@ const Header = () => {
                         運営者情報
                       </a>
                     </Link>
-
-                    <a
-                      href="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xs lg:text-sm font-medium"
-                    >
+                    <Link href="/terms-of-service">
+                      <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xs lg:text-sm font-medium">
                       利用規約
-                    </a>
+                      </a>
+                    </Link>
                     <Link href="/contact-form">
                     <a
                       href="#"
@@ -195,49 +193,24 @@ const Header = () => {
                     >
                       アプリの使い方
                     </a>
-                    <a
-                      href="/admin-page"
-                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-gray-200 hover:bg-gray-400"
-                    >
-                      運営者情報
-                    </a>
-
-                    <a
-                      href="#"
-                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-gray-200 hover:bg-gray-400"
-                    >
+                    <Link href="/admin-page">
+                      <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-gray-200 hover:bg-gray-400">
+                        運営者情報
+                      </a>
+                    </Link>
+                    <Link href="/terms-of-service">
+                      <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-gray-200 hover:bg-gray-400">
                       利用規約
-                    </a>
-                    <a
-                      href="/contact-form"
-                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-gray-200 hover:bg-gray-400"
-                    >
-                      お問い合わせ
-                    </a>
-                  </div>
-                    <div className="px-2 pt-2 pb-3 space-y-1 hidden sm:block">
-                      <a
-                        href="/admin-page"
-                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-gray-200 hover:bg-gray-400"
-                      >
-                        Unknown_Musicとは
                       </a>
-
-                      <a
-                        href="#"
-                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-gray-200 hover:bg-gray-400"
-                      >
-                        コンテンツ
+                    </Link>
+                    <Link href="/contact-form">
+                      <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-gray-200 hover:bg-gray-400">
+                        お問い合わせ
                       </a>
-                      <a
-                        href="/contact-form"
-                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-gray-200 hover:bg-gray-400"
-                      >
-                        使ってみる
-                      </a>
-                    </div>
+                    </Link>
                   </div>
                 </div>
+              </div>
             )}
           </Transition>
       </nav>

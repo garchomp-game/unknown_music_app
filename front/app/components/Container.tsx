@@ -1,5 +1,13 @@
+type textPropsType = {
+      number : number,
+      title : string,
+      text01 : string,
+      text02 : string,
+      text03 : string,
+      image : JSX.Element
+}
 
-const Container = (props : any) => {
+const Container = (props : textPropsType) => {
   return (
     <section className="text-gray-200 body-font bg-gray-900 sm:pb-0 md:pb-0 sm:px-6 sm:mt-0 mx-20">
       <div className="container px-5 mx-auto flex flex-wrap items-center">
