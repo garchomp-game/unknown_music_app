@@ -5,7 +5,7 @@ import Layout from "../components/Layout";
 const LoginPage = () => {
   return (
     <Layout title="Main page">
-      <div className="text-center bg-gray-900 shadow-xl rounded-xl sm:px-24 px-28 py-28 mt-28 mb-12 sm:max-w-lg mx-auto container">
+      <div className="text-center bg-gray-900 shadow-xl rounded-xl sm:px-24 px-28 py-28 mt-60 mb-12 sm:max-w-lg mx-auto container">
         <Auth />
         <div className="flex justify-center">
           <Link href="/">

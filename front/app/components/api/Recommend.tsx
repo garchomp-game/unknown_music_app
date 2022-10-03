@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 
 //曲IDからトラックパラメータ取得
-const Recommend = (props) => {
+const Recommend = (props : any) => {
   console.log(props.artistGenres);
   useEffect(() => {
     axios(

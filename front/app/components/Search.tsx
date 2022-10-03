@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { WaveLoading } from "respinner"
 import ArtistParams from "./api/ArtistParams"
 import ParamsGraph from "./api/ParamsGraph"
 import QueryTracks from "./api/QueryTracks"
@@ -6,21 +7,41 @@ import Recommend from "./api/Recommend"
 import ReTrackParams from "./api/ReTrackParams"
 import TrackCard from "./api/TrackCard"
 import TrackParams from "./api/TrackParams"
-import Trail from "./Atoms/Trail"
-import {WaveLoading} from 'respinner'
-import { Typography } from "@material-ui/core"
-import Grid from "@material-ui/core/Grid"
-import MuiAlert from "@material-ui/lab/Alert"
-import NotInterestedIcon from "@material-ui/icons/NotInterested"
+import Trail from "./api/Trail"
+import Typography from "@mui/material/Typography"
+import Grid from "@mui/material/Grid"
+import Alert from "@mui/material/Alert"
 import ReactHowler from "react-howler"
-import Slider from "@material-ui/core/Slider"
-import Snackbar from "@material-ui/core/Snackbar"
+import Slider from "@mui/material/Slider"
+import Snackbar from "@mui/material/Snackbar"
+import NotInterestedIcon from "@material-ui/icons/NotInterested"
 import VolumeDown from "@material-ui/icons/VolumeDown"
 import VolumeUp from "@material-ui/icons/VolumeUp"
+import Slide, { SlideProps } from '@mui/material/Slide';
 
-const Search = (props) => {
-  const [itemResult, setItemResult] = useState([]);
-  const [trackInfo, setTrackInfo] = useState("");
+const Search = (props : any) => {
+
+  const token = props.token; //Top-contentsからトークンを受け取る。
+  const wordFormData = props.wordFormData; //Top-contentsから値を受け取る。
+  const [itemResult, setItemResult] = useState([]);  //取得してきたデータが入る。
+  const [trackInfo, setTrackInfo] = useState("");  //曲のパラメーターの取得
+  const [playing, setPlaying] = useState(false); //再生停止
+  const [playSrc, setPlaySrc] = useState(""); //再生する曲のリロード
+  const [volumeToggle, setVolumeToggle] = useState(0.2); //初期音量
+  const [trailOpen, setTrailOpen] = useState(true);
+  const [snackBarOpen, setSnackBarOpen] = useState(false);
+  const [graphReDisplay, setGraphReDisplay] = useState("none");
+  const [artistInfo, setArtistInfo] = useState("");
+  const [reTrackInfo, setReTrackInfo] = useState("");
+
+  //類似曲のパラメーター
+  const [lookRecommend, setLookRecommend] = useState([]);
+  const [selectedRecommend, setSelectedRecommend] = useState({
+    reTrackId: "",
+    reTrackName: "none",
+    reTrackPopularity: "",
+    reTrackArtwork: "",
+  });
   const [selectedTrack, setSelectedTrack] = useState({
     trackId: "",
     trackName: "",
@@ -30,30 +51,10 @@ const Search = (props) => {
     trackArtworkUrl: "",
     trackPopularity: "",
   });
-  const [artistInfo, setArtistInfo] = useState("");
-  const [lookRecommend, setLookRecommend] = useState([]);
-  const [selectedRecommend, setSelectedRecommend] = useState({
-    reTrackId: "",
-    reTrackName: "none",
-    reTrackPopularity: "",
-    reTrackArtwork: "",
-  });
-  const [reTrackInfo, setReTrackInfo] = useState("");
-  const [graphReDisplay, setGraphReDisplay] = useState("none");
-  const [trailOpen, setTrailOpen] = useState(true);
-  const [snackBarOpen, setSnackBarOpen] = useState(false);
-  const [volumeToggle, setVolumeToggle] = useState(0.2);
-  const [playing, setPlaying] = useState(false);
-  const [playSrc, setPlaySrc] = useState("");
 
-  const Alert = (props) => {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
-  };
   const handleChange = (event, newValue) => {
     setVolumeToggle(newValue);
   };
-  const token = props.token;
-  const wordFormData = props.wordFormData;
   const handleSnackBarOpen = () => {
     setSnackBarOpen(true);
   };
@@ -69,11 +70,25 @@ const Search = (props) => {
     setTrailOpen(false);
   };
 
-  console.log(artistInfo.genres);
-  console.log(playSrc);
-  console.log(playing);
-  //trackParamsは曲の分析結果 trackInfoに入る
-  return (
+  {/* ポップアップトランジション */}
+  const handleClick = (Transition: React.ComponentType<TransitionProps>) => () => {
+    setTransition(() => Transition);
+    setOpen(true);
+  };
+
+  function TransitionUp(props: TransitionProps) {
+    return <Slide {...props} direction="up" />;
+  }
+
+  const [open, setOpen] = React.useState(false);
+  const [transition, setTransition] = React.useState<
+    React.ComponentType<TransitionProps> | undefined
+  >(undefined);
+
+  type TransitionProps = Omit<SlideProps, 'direction'>;
+  {/* ポップアップトランジション */}
+
+  return(
     <div className="pt-10">
       <div className="bg-gray-900 text-gray-200">
         {/* 音楽再生コントローラー */}
@@ -100,20 +115,27 @@ const Search = (props) => {
           setTrackInfo={setTrackInfo}
         />
         {/* 曲を選んだ通知 */}
-        <div className="w-4/5">
           <Snackbar
             open={snackBarOpen}
-            autoHideDuration={4000}
+            autoHideDuration={2000}
             onClose={handleSnackBarClose}
+            sx={{ height: "10%" }}
+            anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center"
+            }}
+            TransitionComponent={transition}
           >
             <Alert
               severity="success"
+              elevation={24}
+              variant="filled"
               action={
                 <button
                   size="small"
                   variant="contained"
                   onClick={() => handleDataView()}
-                  className="bg-green-700 hover:bg-green-900 text-purple-200 font-bold py-2 px-4 text-xs rounded-full"
+                  className="bg-green-900 hover:bg-green-800 text-purple-200 font-bold py-2 px-4 text-xs rounded-full"
                 >
                   open!
                 </button>
@@ -122,7 +144,6 @@ const Search = (props) => {
               データグラフとおすすめ曲が準備されました
             </Alert>
           </Snackbar>
-        </div>
         {/* 選ばれた曲のアーティスト情報を取得 */}
         {/* 発火条件：トラック選択完了後 */}
         {selectedTrack.length !== 0 && (
@@ -159,9 +180,9 @@ const Search = (props) => {
             sm={3}
           >
             <button
-            onClick={() => handleDataView()}
-            variant="outlined"
-            className="bg-purple-900 hover:bg-purple-700 text-purple-200 font-bold py-2 px-4 text-xs rounded-full font-serif">
+              onClick={() => handleDataView()}
+              variant="outlined"
+              className="bg-purple-900 hover:bg-purple-700 text-purple-200 font-bold py-2 px-4 text-xs rounded-full font-serif">
               データとおすすめ曲
             </button>
           </Grid>
@@ -197,8 +218,8 @@ const Search = (props) => {
             <VolumeUp style={{ color: "#9900ff" }} />
           </Grid>
         </Grid>
-        {/* グラフコンポーネントへの値設定 */}
-        <Grid container direction="row" spacing={1}>
+      {/* グラフコンポーネントへの値設定 */}
+      <Grid container direction="row" spacing={1}>
           <Grid item={true} xs={12} sm={6} style={{ display: graphReDisplay }}>
             {trackInfo.data !== undefined && reTrackInfo.data !== undefined && (
               <ParamsGraph
@@ -228,7 +249,7 @@ const Search = (props) => {
             {lookRecommend !== undefined && artistInfo.genres !== undefined && (
               <>
                 <Grid item={true}>
-                  <Typography variant="h3" className="pb-3">RecommendList</Typography>
+                  <Typography variant="h3" className="text-center">RecommendList</Typography>
                 </Grid>
                 <ul>
                   {lookRecommend.map((props) => (
@@ -260,9 +281,9 @@ const Search = (props) => {
                   ))}
                 </ul>
               </>
-            )}
-          </Grid>
+          )}
         </Grid>
+      </Grid>
         <Typography
           variant="subtitle2"
           className="pl-3 pb-3 pt-3 text-gray-300 text-center block"
@@ -280,9 +301,9 @@ const Search = (props) => {
         </Typography>
         {itemResult !== undefined && itemResult.length === 0 ? (
           <>
-            <WaveLoading size={"large"} color="#6f00ff" strokeWidth={1} />
+            <WaveLoading size={40} count={3} duration={1.5} color="#6f00ff" strokeWidth={1} />
           </>
-        ) : (
+          ) : (
           <>
             <Typography
               variant="h3"
@@ -306,7 +327,8 @@ const Search = (props) => {
                     })
                   }
                 >
-                  <Trail open={trailOpen}>
+                  <Trail open={trailOpen}
+                  onClick={handleClick(TransitionUp)}>
                     <TrackCard
                       audioId={props.id}
                       artistName={props.album.artists[0].name}

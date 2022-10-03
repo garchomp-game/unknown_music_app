@@ -19,7 +19,7 @@ const Trail = ({ open, children, ...props }) => {
             className="trails-text"
             style={{
               ...rest,
-              transform: x.interpolate((x) => `translate3d(${x}px,0,0`)
+              transform: x.to((x) => `translate3d(${x}px,0,0`)
             }}>
             <a.div style={{ height }}>{items[index]}</a.div>
           </a.div>

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 
 //受け取ったアーティストIDから
-const ArtistParams = (props) => {
+const ArtistParams = (props : any) => {
   useEffect(() => {
     axios(`https://api.spotify.com/v1/artists/${props.artistId}`, {
       method: "GET",

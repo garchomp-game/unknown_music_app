@@ -1,7 +1,7 @@
 import React,{ useEffect }from 'react'
 import axios from 'axios'
 
-const Credentials = (props) => {
+const Credentials = (props : any) => {
   useEffect(() => {
     axios("https://accounts.spotify.com/api/token", {
       method: "POST",

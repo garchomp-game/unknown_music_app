@@ -1,56 +1,41 @@
-import { useState } from "react";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import { styled } from "@mui/material/styles";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import NotInterestedIcon from "@material-ui/icons/NotInterested";
 import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material//Typography";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import AddIcon from "@material-ui/icons/Add";
 
-const TrackCard = (props) => {
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      display: "flex",
-      backgroundColor: "#1e1022",
-      color: "#ff87d6",
-      padding: 0,
-      height: 100,
-    },
-    content: {
-      width: "calc(100% - 160px)",
-      textOverflow: "ellipsis",
-      overflow: "hidden",
-      whiteSpace: "nowrap",
-      padding: 10,
-    },
-    cover: {
-      width: 100,
-      height: 100,
-    },
-    trackAndArtist: {},
-    link: {
-      paddingTop: -10,
-    },
-    playButton: {
-      width: 30,
-      height: "auto",
-      alignItems: "center",
-    },
-    icon: {
-      marginRight: 5,
-    },
-  }));
+const CardStyle = styled(Card)(({ theme }) => ({
+  display: "flex",
+  backgroundColor: "#1e1022",
+  color: "#ff87d6",
+  padding: 0,
+  height: 100,
+}));
+
+const CardMediaStyle = styled(CardMedia)(({ theme }) => ({
+  width: 100,
+  height: 100,
+}));
+
+const CardContentStyle = styled(CardContent)(({ theme }) => ({
+  width: "calc(100% - 160px)",
+  extOverflow: "ellipsis",
+  overflow: "hidden",
+  whiteSpace: "nowrap",
+  padding: 10,
+}));
+
+const TrackCard = (props: any) =>  {
+
   //再生ボタンの条件分岐に使用
   let ButtonLooks = false;
-
-  const [isFavorite, setIsFavorite] = useState(true);
-
-  const onClickFavorite = () => {
-  };
 
   //Search.jsにあるReactHowlerの再生管理
   //この階層に再生エンジンを置くと再生機構を複数持つ為同時再生されてしまう
@@ -84,37 +69,47 @@ const TrackCard = (props) => {
   } else if (props.previewUrl === props.playSrc) {
     ButtonLooks = true;
   }
-  const classes = useStyles();
-  const theme = useTheme();
-  return (
-    <div>
+  const theme = createTheme({
+    palette: {
+      mode: "dark",
+    },
+  })
+
+
+return (
+<div>
 {/* ---------アルバムアートワーク--------- */}
-      <Card className={classes.root} elevation={2}>
+  <ThemeProvider theme={theme}>
+    <CardStyle elevation={2}>
         {props.previewUrl !== undefined ? (
-          <CardMedia
+          <CardMediaStyle
             onClick={() => {
               handleStartStop();
             }}
-            className={classes.cover}
             image={props.artworkUrl}
           />
         ) : (
-          <CardMedia className={classes.cover} image={props.artworkUrl} />
+          <CardMediaStyle image={props.artworkUrl} />
         )}
 {/* ---------アルバムアートワーク--------- */}
 
 {/* ---------アーティスト情報--------- */}
-        <CardContent className={classes.content}>
-          <div className={classes.trackAndArtist}>
+      <CardContentStyle>
+          <div>
             <Typography
               component="h6"
               variant="h6"
-              style={{ color: "#bc00eb" }}
+              style={{ color: "#bc00eb", fontSize: 18, }}
+              noWrap
             >
               {props.trackName}
             </Typography>
             <div className="flex relative">
-              <Typography variant="subtitle1" style={{ color: "#A78BFA" }}>
+              <Typography
+                variant="subtitle1"
+                noWrap
+                style={{ color: "#A78BFA" }}
+              >
                 {props.artistName}
               </Typography>
             </div>
@@ -125,21 +120,16 @@ const TrackCard = (props) => {
 
 {/* ---------後で聞く機能--------- */}
                 <AddIcon
-                  style={{ color: "#bc00eb", fontSize: 30 }}
-                  className={classes.icon}
+                  style={{ color: "#bc00eb", fontSize: 30 , marginRight: 5}}
                 />
 {/* ---------後で聞く機能--------- */}
 
 {/* ---------いいね機能--------- */}
                   <FavoriteBorderIcon
-                    style={{ color: "#bc00eb", fontSize: 28, }}
-                    className={classes.icon}
-                    onClick={onClickFavorite}
+                    style={{ color: "#bc00eb", fontSize: 30 , marginRight: 5}}
                   />
                   <FavoriteIcon
-                    style={{ color: "#bc00eb", fontSize: 28, display: "none" }}
-                    className={classes.icon}
-                    onClick={onClickFavorite}
+                    style={{ color: "#bc00eb", fontSize: 28, display: "none", marginRight: 5 }}
                   />
 {/* ---------いいね機能--------- */}
 
@@ -148,16 +138,14 @@ const TrackCard = (props) => {
                   <>
                     {ButtonLooks ? (
                       <PauseCircleOutlineIcon
-                        className={classes.playButton}
-                        style={{ color: "#bc00eb", fontSize: 30 }}
+                        style={{ color: "#bc00eb", fontSize: 30, width: 30 , height: "auto" , alignItems: "center" }}
                         onClick={() => {
                           handleStopPlaying();
                         }}
                       />
                     ) : (
                       <PlayCircleOutlineIcon
-                        className={classes.playButton}
-                        style={{ color: "#bc00eb", fontSize: 30 }}
+                        style={{ color: "#bc00eb", fontSize: 30, width: 30 , height: "auto" , alignItems: "center" }}
                         onClick={() => {
                           handleStartPlaying();
                         }}
@@ -166,16 +154,16 @@ const TrackCard = (props) => {
                   </>
                 ) : (
                   <NotInterestedIcon
-                    className={classes.playButton}
-                    style={{ color: "#7f7f7f", fontSize: 30 }}
+                    style={{ color: "#7f7f7f", fontSize: 30, width: 30 , height: "auto" , alignItems: "center" }}
                   />
                 )}
 {/* ---------再生ボタン機能--------- */}
+                </div>
               </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+        </CardContentStyle>
+    </CardStyle>
+  </ThemeProvider>
+</div>
   );
 }
 export default TrackCard;

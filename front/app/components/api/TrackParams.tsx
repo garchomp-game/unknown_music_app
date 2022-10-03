@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 
 //曲IDからトラックパラメータ取得
-const TrackParams = (props) => {
+const TrackParams = (props : any) => {
   useEffect(() => {
     axios(`https://api.spotify.com/v1/audio-features/${props.id}`, {
       method: "GET",
