@@ -25,7 +25,7 @@ const CardMediaStyle = styled(CardMedia)(({ theme }) => ({
 }));
 
 const CardContentStyle = styled(CardContent)(({ theme }) => ({
-  width: "calc(100% - 160px)",
+  width: "calc(100% - 100px)",
   extOverflow: "ellipsis",
   overflow: "hidden",
   whiteSpace: "nowrap",

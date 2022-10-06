@@ -1,6 +1,5 @@
 import React from 'react';
 import CountUp from "react-countup";
-import 'chart.js/auto';
 import { Radar } from "react-chartjs-2";
 import Grid from "@mui/material/Grid"
 import Typography from "@mui/material/Typography";
@@ -25,16 +24,12 @@ import { styled } from "@mui/material/styles";
 // }
 
 const myOptions = {
-  plugins: {
-    legend:{
+  responsive: true,
+    legend: {
       labels:{
-        font:{
-          size:15
-        },
-        color: ["rgba(255,255,255,255)"]
+        fontColor: "#ddd6fe"
       },
     },
-  },
   layout: {
     padding: 1,
   },
@@ -42,22 +37,22 @@ const myOptions = {
     //目盛の設定
     ticks: {
       display: false,
-      maxTicksLimit: 2,
+      maxTicksLimit:  2,
     },
     // 軸（放射軸）
     angleLines: {
-      lineWidth: 10,
-      color: "#fff",
+      lineWidth: 1,
+      color: "rgba(124, 58, 237)",
     },
     //グリッド線の設定
     gridLines: {
-      color: "#9900ff",
+      color: "rgba(124, 58, 237)",
       drawBorder: true,
     },
     // 軸のラベル
     pointLabels: {
-      fontSize: 20,
-      fontColor: "rgba(255,255,255,255)"
+      fontSize: 11,
+      fontColor: "#ddd6fe",
     },
   }
 };
@@ -84,7 +79,7 @@ const ParamsGraph = React.memo(( props : any ) => {
         pointHitRadius: "3",
         pointHoverBackgroundColor: "#fff",
         pointHoverBorderColor: "#db5dfe",
-        pointRadius: 0.1,
+        pointRadius: 0,
         data: [
           ReShPopularity,
           ReShTempo,
@@ -104,7 +99,7 @@ const ParamsGraph = React.memo(( props : any ) => {
         pointHitRadius: "3",
         pointHoverBackgroundColor: "#fff",
         pointHoverBorderColor: "#1db954",
-        pointRadius: 0.1,
+        pointRadius: 0,
         data: [
           ShrinkedPopularity,
           ShrinkedTempo,
@@ -148,10 +143,10 @@ const ParamsGraph = React.memo(( props : any ) => {
   };
 
   return (
-    <div>
-      <ThemeProvider theme={theme}>
-      <Radar data={data} options={myOptions} {...props} width={600} height={600} />
-        <Grid container direction="row">
+    <>
+    <ThemeProvider theme={theme}>
+      <Grid container direction="row">
+        <Radar data={data} options={myOptions} {...props} width={600} height={600} />
           {props.FirstTempo !== undefined && props.FirstTempo.length !== 0 && (
             <GridStyle item xs={6}>
                 <BpmStyle variant="h4">
@@ -175,9 +170,9 @@ const ParamsGraph = React.memo(( props : any ) => {
               </BpmStyle>
             </GridStyle>
           )}
-        </Grid>
+      </Grid>
       </ThemeProvider>
-    </div>
+    </>
   );
 })
 export default ParamsGraph;

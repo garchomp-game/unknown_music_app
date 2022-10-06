@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { WaveLoading } from "respinner"
+import Loader from "react-loader-spinner";
 import ArtistParams from "./api/ArtistParams"
 import ParamsGraph from "./api/ParamsGraph"
 import QueryTracks from "./api/QueryTracks"
@@ -18,8 +18,15 @@ import NotInterestedIcon from "@material-ui/icons/NotInterested"
 import VolumeDown from "@material-ui/icons/VolumeDown"
 import VolumeUp from "@material-ui/icons/VolumeUp"
 import Slide, { SlideProps } from '@mui/material/Slide';
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const Search = (props : any) => {
+  const customFont = "'Economica', 'Sawarabi Mincho', sans-serif"
+  const theme = createTheme({
+    typography: {
+      fontFamily: customFont,
+    },
+});
 
   const token = props.token; //Top-contentsからトークンを受け取る。
   const wordFormData = props.wordFormData; //Top-contentsから値を受け取る。
@@ -89,7 +96,8 @@ const Search = (props : any) => {
   {/* ポップアップトランジション */}
 
   return(
-    <div className="pt-10">
+    <ThemeProvider theme={theme}>
+    <div className="pt-10 max-w-sm sm:max-w-4xl">
       <div className="bg-gray-900 text-gray-200">
         {/* 音楽再生コントローラー */}
         {playSrc !== null && playSrc.length !== 0 && (
@@ -175,20 +183,20 @@ const Search = (props : any) => {
         <Grid container spacing={0}>
           <Grid
             item={true}
-            className="flex text-center justify-center whitespace-nowrap pt-6"
+            className="flex text-center justify-center whitespace-nowrap pt-6 pb-6"
             xs={6}
             sm={3}
           >
             <button
               onClick={() => handleDataView()}
               variant="outlined"
-              className="bg-purple-900 hover:bg-purple-700 text-purple-200 font-bold py-2 px-4 text-xs rounded-full font-serif">
-              データとおすすめ曲
+              className="bg-purple-900 hover:bg-purple-700 text-purple-200 font-bold py-2 px-2 text-xs rounded-full font-serif">
+              レコメンド曲
             </button>
           </Grid>
           <Grid
             item={true}
-            className="flex text-center justify-center whitespace-nowrap pt-6"
+            className="flex text-center justify-center whitespace-nowrap pt-6 pb-6"
             xs={6}
             sm={3}
           >
@@ -219,8 +227,8 @@ const Search = (props : any) => {
           </Grid>
         </Grid>
       {/* グラフコンポーネントへの値設定 */}
-      <Grid container direction="row" spacing={1}>
-          <Grid item={true} xs={12} sm={6} style={{ display: graphReDisplay }}>
+      <Grid container direction="row" justifyContent="center">
+          <Grid item={true} xs={10} sm={6} style={{ display: graphReDisplay }}>
             {trackInfo.data !== undefined && reTrackInfo.data !== undefined && (
               <ParamsGraph
                 // 検索結果で選んだ曲のパラメータをグラフに投入
@@ -245,11 +253,11 @@ const Search = (props : any) => {
             )}
           </Grid>
           {/* 類似曲の表示条件分岐 */}
-          <Grid item={true} xs={12} sm={6} style={{ display: graphReDisplay }}>
+          <Grid item={true} xs={12} md={6} style={{ display: graphReDisplay }}>
             {lookRecommend !== undefined && artistInfo.genres !== undefined && (
               <>
-                <Grid item={true}>
-                  <Typography variant="h3" className="text-center">RecommendList</Typography>
+                <Grid item={true} xs={12} sm={12}>
+                  <Typography variant="h4" className="text-center text-purple-400 font-serif">RecommendList</Typography>
                 </Grid>
                 <ul>
                   {lookRecommend.map((props) => (
@@ -299,36 +307,25 @@ const Search = (props : any) => {
             は権利元によりプレビューが許可されていません。
           </div>
         </Typography>
-        {itemResult !== undefined && itemResult.length === 0 ? (
-          <>
-            <WaveLoading size={40} count={3} duration={1.5} color="#6f00ff" strokeWidth={1} />
-          </>
-          ) : (
-          <>
-            <Typography
-              variant="h3"
-              className="pl-3 text-center text-purple-400"
-            >
-              TrackList
-            </Typography>
+        {itemResult !== undefined && itemResult.length === 0 ?
+          <div className="container mx-auto xl:ml-96 md:ml-80 sm:ml-60 ml-32 max-w-xl">
+            <Loader type="Audio" color="rgba(109, 40, 217)" height={40} width={40} timeout={3000}/>
+          </div>
+          :<><Typography variant="h4" className="pl-3 text-center text-purple-400">TrackList</Typography>
             <ul className="m-0 p-0" onClick={handleSnackBarOpen}>
-              {itemResult.map((props) => (
+              {itemResult.map((props) =>
                 <li
                   className="list-none border-b border-solid border-purple-700 pt-3 pb-3 pl-0 transition-all"
                   key={props.id}
-                  onClick={() =>
-                    setSelectedTrack({
+                  onClick={() => setSelectedTrack({
                       trackId: props.id,
                       trackName: props.name,
                       trackArtistId: props.artists[0].id,
                       trackArtistName: props.artists[0].name,
                       trackArtworkUrl: props.album.images[1].url,
                       trackPopularity: props.popularity,
-                    })
-                  }
-                >
-                  <Trail open={trailOpen}
-                  onClick={handleClick(TransitionUp)}>
+                    })}>
+                  <Trail open={trailOpen}>
                     <TrackCard
                       audioId={props.id}
                       artistName={props.album.artists[0].name}
@@ -343,12 +340,12 @@ const Search = (props : any) => {
                     ></TrackCard>
                   </Trail>
                 </li>
-              ))}
+              )}
             </ul>
           </>
-        )}
+        }
       </div>
     </div>
-  );
-};
+    </ThemeProvider>
+  )};
 export default Search;
