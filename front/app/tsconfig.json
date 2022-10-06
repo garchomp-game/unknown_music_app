@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["dom", "dom.iterable", "esnext", "es6"],
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,7 +18,12 @@
     "jsx": "preserve",
     "incremental": true,
     "outDir": "./dist",
+    "jsxImportSource" : "@emotion/react",
+    "paths": {
+      "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
+            },
+    "types": ["@emotion/react/types/css-prop"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "postcss.config.js", "tailwind.config.js", "postcss.config.js", "next.config.js", "pages/index.tsx", "pages/_app.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "postcss.config.js", "tailwind.config.js", "postcss.config.js", "next.config.js", "pages/index.tsx", "pages/_app.tsx", "components/Search.jsx", "components/Atoms/Trail.js"],
   "exclude": ["node_modules"]
 }

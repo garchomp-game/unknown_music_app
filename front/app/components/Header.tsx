@@ -24,7 +24,7 @@ const Header = () => {
       <nav className="left-0 block fixed w-full bg-gray-900 z-50 bg-opacity-95 shadow-2xl">
         {/* スマホ用ハンバーガーメニュー */}
         <div ref={dropdownRef}>
-          <div className="max-w-7xl mx-auto xl:mx-44 md:mx-20">
+          <div className=" mx-auto xl:mx-44 md:mx-20">
             <div className="relative flex items-center justify-between h-16">
                 <div className="ml-6 flex items-center flex-row flex-col sm:hidden">
                     <button

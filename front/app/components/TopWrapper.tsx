@@ -88,8 +88,7 @@ const TopWrapper = () => {
             {(ref) => (
               <div
                 ref={ref}
-                className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
-                >
+                className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
                 <div className="rounded-lg shadow-md bg-gray-900 ring-1 ring-black ring-opacity-5 overflow-hidden pb-6 bg-opacity-95">
                   <div className="px-5 pt-4 flex items-center justify-between">
                     <div>
@@ -139,7 +138,7 @@ const TopWrapper = () => {
                         コンテンツ
                       </AnchorLink>
                       <a
-                        href="/contact-form"
+                        href="/top-contents"
                         className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-gray-200 hover:bg-gray-400"
                       >
                         使ってみる
@@ -149,6 +148,7 @@ const TopWrapper = () => {
                 </div>
             )}
           </Transition>
+
           <main className="mx-auto max-w-7xl px-4 sm:mt-5 -mt-5 sm:px-10 md:mt-16 lg:mt-10 lg:px-5 xl:mt-16">
             <div className="text-center sm:container lg:text-left lg:justify-center xl:pl-10">
               <h2 className="tracking-tight font-medium text-gray-400 sm:text-5xl md:text-1xl">
@@ -171,7 +171,7 @@ const TopWrapper = () => {
               <div className="mt-10 sm:mt-8 sm:flex sm:justify-center lg:justify-start sm:-mb-10 lg:mb-0">
                 <div className="rounded-md shadow">
                   <Link href="/login-page">
-                    <a className="w-full xl:py-4 sm:text-sm lg:px-1 px-8 py-3 xl:px-10 lg:ml-6 xl:ml-1 flex items-center justify-center border border-transparent text-base rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                    <a className="w-full xl:py-4 sm:text-xs md:text-sm lg:px-1 px-8 py-3 xl:px-10 lg:ml-6 xl:ml-1 flex items-center justify-center border border-transparent text-base rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
                       アカウント登録で利用
                     </a>
                   </Link>
@@ -179,7 +179,7 @@ const TopWrapper = () => {
                 <div className="mt-3 sm:mt-0 sm:ml-3">
                   <a
                     href="#"
-                    className="w-full xl:py-4 lg:px-1 px-8 py-3 sm:text-sm lg:px-5 xl:px-10 xl:ml-1 lg:ml-6 flex items-center justify-center border border-transparent text-base rounded-md text-indigo-600 bg-indigo-100 hover:bg-indigo-200"
+                    className="w-full xl:py-4 lg:px-1 px-8 py-3 sm:text-xs md:text-sm lg:px-5 xl:px-10 xl:ml-1 lg:ml-6 flex items-center justify-center border border-transparent text-base rounded-md text-indigo-600 bg-indigo-100 hover:bg-indigo-200"
                   >
                     ゲストユーザーで利用
                   </a>

@@ -1,4 +1,4 @@
-type textPropsType = {
+interface ServiceProps {
   title : string,
   text01 : string,
   text02 : string,
@@ -6,21 +6,22 @@ type textPropsType = {
   text04 : string,
 }
 
-const Service = (props: textPropsType) => {
+const Service:React.FC<ServiceProps> = (props) => {
+  const {title,text01,text02,text03,text04} = props;
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 px-4">
       <div className="p-10 md:px-7 xl:px-10 rounded-[20px] shadow-md mb-8 bg-gray-900">
         <h4 className="font-semibold text-xl text-dark mb-3 underline">
-        {props.title}
+        {title}
         </h4>
         <p className="text-body-color text-sm">
-        {props.text01}
+        {text01}
         <br></br>
-        {props.text02}
+        {text02}
         <br></br>
-        {props.text03}
+        {text03}
         <br></br>
-        {props.text04}
+        {text04}
         </p>
       </div>
     </div>
