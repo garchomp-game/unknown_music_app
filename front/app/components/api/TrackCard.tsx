@@ -32,7 +32,7 @@ const CardContentStyle = styled(CardContent)(({ theme }) => ({
   padding: 10,
 }));
 
-const TrackCard = (props: any) =>  {
+const TrackCard:React.FC = (props: any) =>  {
 
   //再生ボタンの条件分岐に使用
   let ButtonLooks = false;

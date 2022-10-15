@@ -20,7 +20,7 @@ import VolumeUp from "@material-ui/icons/VolumeUp"
 import Slide, { SlideProps } from '@mui/material/Slide';
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-const Search = (props : any) => {
+const Search:React.FC = (props : any) => {
   const customFont = "'Economica', 'Sawarabi Mincho', sans-serif"
   const theme = createTheme({
     typography: {
@@ -98,7 +98,7 @@ const Search = (props : any) => {
   return(
     <ThemeProvider theme={theme}>
     <div className="pt-10 max-w-sm sm:max-w-4xl">
-      <div className="bg-gray-900 text-gray-200">
+      <div className="bg-gray-900 text-gray-200 rounded-xl">
         {/* 音楽再生コントローラー */}
         {playSrc !== null && playSrc.length !== 0 && (
           <ReactHowler
@@ -189,7 +189,6 @@ const Search = (props : any) => {
           >
             <button
               onClick={() => handleDataView()}
-              variant="outlined"
               className="bg-purple-900 hover:bg-purple-700 text-purple-200 font-bold py-2 px-2 text-xs rounded-full font-serif">
               レコメンド曲
             </button>
@@ -201,7 +200,6 @@ const Search = (props : any) => {
             sm={3}
           >
             <button
-              variant="outlined"
               className="bg-purple-900 hover:bg-purple-700 text-purple-200 font-bold py-2 px-4 text-xs rounded-full font-serif"
               onClick={() => handleSearchView()}
             >
@@ -308,8 +306,8 @@ const Search = (props : any) => {
           </div>
         </Typography>
         {itemResult !== undefined && itemResult.length === 0 ?
-          <div className="container mx-auto xl:ml-96 md:ml-80 sm:ml-60 ml-32 max-w-xl">
-            <Loader type="Audio" color="rgba(109, 40, 217)" height={40} width={40} timeout={3000}/>
+          <div className="container mx-auto flex justify-center pb-10 pt-4">
+            <Loader type="Audio" color="rgba(109, 40, 217)" height={60} width={60}/>
           </div>
           :<><Typography variant="h4" className="pl-3 text-center text-purple-400">TrackList</Typography>
             <ul className="m-0 p-0" onClick={handleSnackBarOpen}>

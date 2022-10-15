@@ -1,4 +1,4 @@
-const TopContainer = () => {
+const TopContainer:React.FC = () => {
   return (
     <section className="text-gray-200 body-font bg-gray-900 pb-10 sm:pb-16 md:pb-10 sm:px-6 sm:mt-0 mx-20 rounded-t-xl">
       <h1 className="text-center pt-20 lg:text-4xl text-indigo-500 text-3xl">Unknown Musicとは</h1>

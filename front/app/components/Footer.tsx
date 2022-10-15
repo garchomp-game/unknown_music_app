@@ -1,6 +1,6 @@
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
-const Footer = () => {
+const Footer:React.FC = () => {
   return (
     <footer className="text-gray-100 body-font bg-gray-900 px-56 w-screen">
       <div className="container px-4 py-5 mx-auto flex items-center sm:flex-row flex-col">

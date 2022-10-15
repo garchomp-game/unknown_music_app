@@ -2,7 +2,7 @@ import Layout from "../components/Layout";
 import Link from "next/link";
 import Contact from "../components/Contact";
 
-const ContactForm = () => {
+const ContactForm:React.FC = () => {
   return (
     <Layout title="Contact-Form">
       <div className="text-center bg-gray-900 shadow-xl rounded-xl mt-32 mb-16 md:max-w-2xl mx-auto container max-w-md">

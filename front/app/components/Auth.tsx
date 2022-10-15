@@ -7,7 +7,7 @@ import Cookie from "universal-cookie"; //universal-cookieからCookie
 //取得したJWTトークンをCookieに格納する。
 const cookie = new Cookie();
 
-const Auth = () => {
+const Auth:React.FC = () => {
   const router = useRouter(); //useRouterの実行。routerは関数の中からページ遷移をしたい場合に使うことができる
   const [email, setEmail] = useState(""); //useStateでlocalStateを定義する。
   const [password, setPassword] = useState("");

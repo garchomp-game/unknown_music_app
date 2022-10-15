@@ -57,7 +57,7 @@ const myOptions = {
   }
 };
 
-const ParamsGraph = React.memo(( props : any ) => {
+const ParamsGraph:React.FC = React.memo(( props : any ) => {
   const ShrinkedPopularity = props.FirstPopularity * 0.01;
   const ShrinkedLoudness = (props.FirstLoudness + 70) * 0.01;
   const ShrinkedTempo = props.FirstTempo * 0.005;
