@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Gallery = () => {
+const Gallery:React.FC = () => {
   return (
     <section className="text-gray-600 body-font container">
       <div className="py-6 mx-auto flex flex-wrap">

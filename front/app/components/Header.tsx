@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import Link from "next/link";
 
-const Header = () => {
+const Header:React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [thisOpen, setThisOpen] = useState(false);
 
@@ -68,11 +68,11 @@ const Header = () => {
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     <a
-                      href="#"
+                      href="/top-contents"
                       className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xs lg:text-sm font-medium"
                       aria-current="page"
                     >
-                      アプリの使い方
+                      メインコンテンツ
                     </a>
 
                     <Link href="/admin-page">
@@ -143,7 +143,7 @@ const Header = () => {
                         aria-labeledBy="user-menu"
                       >
                         <a
-                          href="#"
+                          href="/my-page"
                           className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-300"
                           role="menuitem"
                         >
@@ -188,10 +188,10 @@ const Header = () => {
                 <div className="rounded-lg shadow-md w-5/12 bg-gray-900 ring-1 ring-black ring-opacity-5 overflow-hidden pb-0 bg-opacity-95">
                   <div className="px-2 pt-2 pb-3 space-y-1 sm:hidden block">
                   <a
-                      href="#"
+                      href="/top-contents"
                       className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-gray-200 hover:bg-gray-400"
                     >
-                      アプリの使い方
+                      メインコンテンツ
                     </a>
                     <Link href="/admin-page">
                       <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-gray-200 hover:bg-gray-400">

@@ -2,7 +2,7 @@ import Layout from "../components/Layout";
 import Image from "next/image";
 import Link from "next/link";
 
-const AdminPage = () => {
+const AdminPage:React.FC = () => {
   return (
     <Layout title="Admin-Page">
       <section className="pt-32 mb-0 pb-14">

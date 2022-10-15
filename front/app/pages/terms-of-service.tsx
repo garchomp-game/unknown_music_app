@@ -2,7 +2,7 @@ import Link from "next/link";
 import Layout from "../components/Layout";
 import Service from "../components/Service";
 
-const TermsOfService = () => {
+const TermsOfService:React.FC = () => {
    return(
       <Layout title="Terms of service">
          <section className="pt-20 lg:pt-[120px] pb-12 lg:pb-[90px]">

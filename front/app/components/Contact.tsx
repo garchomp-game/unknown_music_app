@@ -1,4 +1,4 @@
-const Contact = () => {
+const Contact:React.FC = () => {
   return (
     <section className="text-gray-100 body-font relative">
       <div className="py-6">

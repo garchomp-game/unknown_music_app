@@ -9,7 +9,7 @@ import Heart from "../components/icon/Heart";
 import Post from "../components/icon/Post";
 import Spacer from "../components/Spacer";
 
-const Home = () => {
+const Home:React.FC = () => {
   return (
     <Layout title="Main-Page">
       <div className="mt-24 container">

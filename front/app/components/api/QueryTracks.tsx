@@ -2,7 +2,7 @@ import React,{ useEffect }from 'react'
 import axios from 'axios'
 
 //曲名単語検索
-const QueryTracks = (props: any) => {
+const QueryTracks:React.FC = (props: any) => {
   useEffect(() => {
     axios(`https://api.spotify.com/v1/search?query=${props.wordFormData}&type=track&limit=20`, {
       method: "GET",

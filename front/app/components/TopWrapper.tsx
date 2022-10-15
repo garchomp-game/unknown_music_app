@@ -3,7 +3,7 @@ import { Transition } from "@headlessui/react";
 import Link from "next/link";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
-const TopWrapper = () => {
+const TopWrapper:React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleToggleButtonClick = () => {
     setIsOpen(true);
