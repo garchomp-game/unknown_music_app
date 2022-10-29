@@ -18,7 +18,7 @@ import useQueryTracks from "./hooks/useQueryTracks"
 import useArtistParams from "./hooks/useArtistParams"
 import useRecommend from "./hooks/useRecommend"
 import useReTrackParams from "./hooks/useReTrackParams"
-
+import { Artist, Album } from "@types/spotify-api"
 interface SearchProps{
   token : string;
   wordFormData : string;
@@ -35,8 +35,8 @@ interface SelectedTrackProps{
 interface SetItemResultProps{
   id: string;
   name: string;
-  artists: string|any;
-  album: string|any;
+  artists: Artist[];
+  album: Album[];
   popularity: number;
   preview_url: string;
 }
