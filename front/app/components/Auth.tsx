@@ -50,7 +50,7 @@ const Auth:React.FC = () => {
   };
 
   //フォームの処理。submitボタンが押された時に呼び出される関数
-  const authUser = async (e) => {
+  const authUser = async (e: React.MouseEvent<HTMLFormElement, MouseEvent>) => {
     e.preventDefault(); //自動リロードを防ぐ
     if (isLogin) {
       login();

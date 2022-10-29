@@ -11,6 +11,17 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import AddIcon from "@material-ui/icons/Add";
 
+interface TrackCardProps{
+  artistName: string;
+  artworkUrl: string;
+  trackName: string;
+  previewUrl: string|number|boolean;
+  playing: boolean;
+  playSrc: string;
+  setPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+  setPlaySrc: React.Dispatch<React.SetStateAction<string|any>>;
+}
+
 const CardStyle = styled(Card)(({ theme }) => ({
   display: "flex",
   backgroundColor: "#1e1022",
@@ -32,7 +43,7 @@ const CardContentStyle = styled(CardContent)(({ theme }) => ({
   padding: 10,
 }));
 
-const TrackCard:React.FC = (props: any) =>  {
+const TrackCard = (props: TrackCardProps) =>  {
 
   //再生ボタンの条件分岐に使用
   let ButtonLooks = false;

@@ -1,7 +1,8 @@
-import React,{ useEffect }from 'react'
+import React, { useEffect, useState }from 'react'
 import axios from 'axios'
 
-const Credentials:React.FC = (props : any) => {
+const useCredentials = () => {
+  const [token, setToken] = useState<string>("");
   useEffect(() => {
     axios("https://accounts.spotify.com/api/token", {
       method: "POST",
@@ -12,17 +13,13 @@ const Credentials:React.FC = (props : any) => {
       },
       data: "grant_type=client_credentials"
     }).then((tokenResponse) => {
-      console.log(
+      console.debug(
           "アクセストークン："
           + tokenResponse.data.access_token)
-          {props.setToken(tokenResponse.data.access_token)}
+          setToken(tokenResponse.data.access_token)
     }
     )
   }, [])
-  return (
-    <div>
-      { props.setToken }
-    </div>
-  )
+  return token
   }
-  export default Credentials;
+  export default useCredentials;

@@ -1,27 +1,27 @@
-import React from 'react';
-import CountUp from "react-countup";
-import { Radar } from "react-chartjs-2";
+import React from 'react'
+import CountUp from "react-countup"
+import { Radar } from "react-chartjs-2"
 import Grid from "@mui/material/Grid"
-import Typography from "@mui/material/Typography";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography"
+import { ThemeProvider, createTheme } from "@mui/material/styles"
+import { styled } from "@mui/material/styles"
 
-// interface ParamsProps {
-//   FirstPopularity : number
-//   FirstLoudness : number,
-//   FirstTempo : number,
-//   FirstValence : number,
-//   FirstDanceAbility : number,
-//   FirstEnergy : number,
-//   RePopularity : number,
-//   ReLoudness : number,
-//   ReTempo : number,
-//   ReValence : number,
-//   ReDanceAbility : number,
-//   ReEnergy : number,
-//   trackName : string,
-//   reTrackName : string
-// }
+interface ParamsProps {
+  FirstPopularity : number;
+  FirstLoudness : number;
+  FirstTempo : number;
+  FirstValence : number;
+  FirstDanceAbility : number;
+  FirstEnergy : number;
+  RePopularity : number;
+  ReLoudness : number;
+  ReTempo : number;
+  ReValence : number;
+  ReDanceAbility : number;
+  ReEnergy : number;
+  trackName : string;
+  reTrackName : string;
+}
 
 const myOptions = {
   responsive: true,
@@ -57,20 +57,23 @@ const myOptions = {
   }
 };
 
-const ParamsGraph:React.FC = React.memo(( props : any ) => {
-  const ShrinkedPopularity = props.FirstPopularity * 0.01;
-  const ShrinkedLoudness = (props.FirstLoudness + 70) * 0.01;
-  const ShrinkedTempo = props.FirstTempo * 0.005;
+const ParamsGraph = React.memo((props: ParamsProps) => {
+  const {FirstPopularity, FirstLoudness, FirstTempo, RePopularity, ReLoudness, ReTempo,
+        reTrackName, ReValence, ReDanceAbility, ReEnergy, trackName, FirstValence, FirstDanceAbility,
+        FirstEnergy} = props;
+  const ShrinkedPopularity = FirstPopularity * 0.01;
+  const ShrinkedLoudness = (FirstLoudness + 70) * 0.01;
+  const ShrinkedTempo = FirstTempo * 0.005;
 
-  const ReShPopularity = props.RePopularity * 0.01;
-  const ReShLoudness = (props.ReLoudness + 70) * 0.01;
-  const ReShTempo = props.ReTempo * 0.005;
+  const ReShPopularity = RePopularity * 0.01;
+  const ReShLoudness = (ReLoudness + 70) * 0.01;
+  const ReShTempo = ReTempo * 0.005;
 
-  const data:any = {
+  const data = {
     labels: ["人気度", "テンポ", "激しさ", "明るさ", "踊りやすさ", "エナジー"],
     datasets: [
       {
-        label: props.reTrackName,
+        label: reTrackName,
         backgroundColor: "rgba(219,93,254,0.4)",
         borderColor: "#db5dfe",
         borderWidth: 2,
@@ -84,13 +87,13 @@ const ParamsGraph:React.FC = React.memo(( props : any ) => {
           ReShPopularity,
           ReShTempo,
           ReShLoudness,
-          props.ReValence,
-          props.ReDanceAbility,
-          props.ReEnergy,
+          ReValence,
+          ReDanceAbility,
+          ReEnergy,
         ],
       },
       {
-        label: props.trackName,
+        label: trackName,
         backgroundColor: "rgba(29,185,84,0.7)",
         borderColor: "#1db954",
         borderWidth: 2,
@@ -104,9 +107,9 @@ const ParamsGraph:React.FC = React.memo(( props : any ) => {
           ShrinkedPopularity,
           ShrinkedTempo,
           ShrinkedLoudness,
-          props.FirstValence,
-          props.FirstDanceAbility,
-          props.FirstEnergy,
+          FirstValence,
+          FirstDanceAbility,
+          FirstEnergy,
         ],
       },
     ],
@@ -147,24 +150,24 @@ const ParamsGraph:React.FC = React.memo(( props : any ) => {
     <ThemeProvider theme={theme}>
       <Grid container direction="row">
         <Radar data={data} options={myOptions} {...props} width={600} height={600} />
-          {props.FirstTempo !== undefined && props.FirstTempo.length !== 0 && (
+          {FirstTempo !== undefined && (
             <GridStyle item xs={6}>
                 <BpmStyle variant="h4">
                   BPM
                 </BpmStyle>
               <Typography variant="h3" style={{ color: "#1db954" }}>
-                <CountUp end={Math.trunc(props.FirstTempo)} />
+                <CountUp end={Math.trunc(FirstTempo)} />
               </Typography>
           </GridStyle>
           )}
-        {props.ReTempo !== undefined && props.ReTempo.length !== 0 && (
+        {ReTempo !== undefined && (
             <GridStyle item xs={6}>
                 <BpmStyle variant="h4">
                   BPM
                 </BpmStyle>
               <BpmStyle variant="h3">
                 <CountUp
-                  end={Math.trunc(props.ReTempo)}
+                  end={Math.trunc(ReTempo)}
                   className="text-purple-600"
                 />
               </BpmStyle>

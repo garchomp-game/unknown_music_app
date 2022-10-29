@@ -8,7 +8,7 @@ interface ContainerProps {
 }
 
 const Container:React.FC<ContainerProps> = (props) => {
-  const {number,title,text01,text02,text03,image} = props;
+  const {number, title, text01, text02, text03, image} = props;
   return (
     <section className="text-gray-200 body-font bg-gray-900 sm:pb-0 md:pb-0 sm:px-6 sm:mt-0 mx-20">
       <div className="container px-5 mx-auto flex flex-wrap items-center">
