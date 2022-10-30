@@ -18,6 +18,8 @@ import useQueryTracks from "./hooks/useQueryTracks"
 import useArtistParams from "./hooks/useArtistParams"
 import useRecommend from "./hooks/useRecommend"
 import useReTrackParams from "./hooks/useReTrackParams"
+import { SingleArtistResponse } from "@types/spotify-api"
+
 
 interface SearchProps{
   token : string;
@@ -35,8 +37,8 @@ interface SelectedTrackProps{
 interface SetItemResultProps{
   id: string;
   name: string;
-  artists: string|any;
-  album: string|any;
+  artists: MultipleArtistResponse[]; //1つだけ取得する場合はSingleArtistResponse;
+  album: MultipleAlbumResponse[]; //1つだけ取得する場合はSingleAlbumResponse; []がいらないことに注意
   popularity: number;
   preview_url: string;
 }
@@ -71,7 +73,7 @@ interface SelectedRecommendProps{
 interface SetLookRecommendProps{
     id: string;
     name: string;
-    album: string|any;
+    album: MultipleAlbumResponse[];
     popularity: number;
     preview_url: string;
 }
